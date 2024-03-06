@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <p><p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+    </p>
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p>Attempts left: <span id="attempts">10</span></p>
+    <div id="output"></div>
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 10;
+        let guessedNumbers = [];
+
+        function checkGuess() {
+            let guess = parseInt(document.getElementById("guess").value);
+            if (guessedNumbers.includes(guess)) {
+                alert("You've already guessed this number. Try again!");
+                return;
+            }
+            guessedNumbers.push(guess);
+            let output = document.getElementById("output");
+            let attemptsLeft = document.getElementById("attempts");
+            if (guess === randomNumber) {
+                output.innerHTML = `Congratulations! You guessed the correct number (${randomNumber}) in ${10 - attempts + 1} attempts.`;
+                output.innerHTML += '<button onclick="restart()">Restart</button>';
+            } else {
+                attempts--;
+                if (attempts === 0) {
+                    output.innerHTML = `Sorry, you've run out of attempts. The correct number was ${randomNumber}.`;
+                    output.innerHTML += '<button onclick="restart()">Restart</button>';
+                } else {
+                    let hint = guess < randomNumber ? "too low" : "too high";
+                    output.innerHTML = `Wrong! ${guess} is ${hint}. Attempts left: ${attempts}.`;
+                }
+            }
+            attemptsLeft.textContent = attempts;
+        }
+
+        function restart() {
+            attempts = 10;
+            guessedNumbers = [];
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("output").innerHTML = "";
+            document.getElementById("attempts").textContent = attempts;
+            document.getElementById("guess").value = "";
+        }
+    </script>
+</body>
+</html>
