@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <style>
+    body {
+      font-family: "Trirong", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh; /* Changed to min-height to ensure the container expands with content */
+      background-color: #5d4965;
+    }
+
+    .side {
+    flex: 0.5; /* Changed from flex: 1; to reduce width */
+    background-color: #5d4965;
+    padding: 1px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    margin: 0; /* Remove default margin */
+}
+
+
+    .main {
+      flex: 3;
+      background-color:#f9e0d9;
+      padding: 25px;
+      box-sizing: border-box;
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .image {
+      max-width: 100%; /* Ensure image fits within container */
+      height: auto;
+      
+    }
+
+    .side ul {
+      padding: 0; /* Remove default padding */
+      list-style-type: none;
+      /* width: 100%;  */
+    }
+
+    .side li {
+      margin-bottom: 10px;
+      /* width: 100%; */
+    }
+
+    .side a {
+      color:#f9e0d9;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .side a:hover {
+      text-decoration: underline;
+    }
+
+    .main p {
+      font-size: 1.25rem;
+    }
+
+    /* @media screen and (max-width: 700px) {
+        .row, .navbar {   
+            flex-direction: column;
+        }
+    } */
+  </style>
+</head>
+<body>
+  <div class="flex-container">
+    <div class="side">
+      
+      <ul>
+        <li><img class="image" src="me.JPG" alt="Thats me dancing!!"></li>
+        <li><a target="_blank" href="https://github.com/apalapramanik">My Github Page</a></li>
+        <li><a target="_blank" class="btn" href="courses.html">Course Work</a></li>
+        <li><a target="_blank" href="APALA_RESUME.pdf">Resume</a></li>
+        <li><a target="_blank" href="research.html">Research</a></li>
+        <li><a target="_blank" href="contact.html">Contact</a></li>
+        <li><a target="_blank" href="form.html">Queries</a></li>
+      </ul>
+    </div>
+    <div class="main">
+      <h1 class="header">Apala Pramanik</h1>
+      <h3>Bio</h3>
+      <p>
+        I am currently a graduate research assistant at the University of Nebraska Lincoln.
+        My main research focus is perception-based safety monitoring and verification of autonomous robots at construction sites.
+        I obtained my bachelor's degree from Guru Gobind Singh Indraprastha University (GGSIPU), New Delhi.
+      </p>
+      <h3>Hobbies</h3>
+      <p>
+        Beyond academia, I nurture diverse interests that contribute to my personal
+        growth. Dance, particularly Bharatnatyam, has been an integral part of my life,
+        fostering discipline, creativity, and a deep appreciation for cultural expression.
+        Moreover, I pursue physical fitness, consistently pushing my limits. In my fitness
+        journey, I have achieved a personal record of 125 lbs for the deadlift. I am
+        committed to a healthy and active lifestyle
+      </p>
+      <h3>News</h3>
+
+      <ol>
+        <li>Completed Graduate Teaching Fellowship Program at UNL</li>
+        <li>Presented poster at IROS 2023</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

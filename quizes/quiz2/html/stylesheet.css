@@ -1,0 +1,96 @@
+/* <head
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"> */
+
+
+body {
+    color:#5d4965;
+    background-color:#f9e0d9;
+    font-family: serif;
+    font-weight: bold;
+    /* margin-left: 500px; */
+
+}
+
+h1 {
+    text-align:center;
+    font-size: 60px;
+    background-color:#f9e0d9;  
+    color:#5d4965;  
+
+}
+
+h2, h3 , h4 {
+    text-align:left;
+    font-family:serif; 
+    font-size: 40px;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.quote{
+    font-style: italic;
+}
+
+.blue{
+    line-height: 1.5em;
+    font-size: 30px;
+
+}
+
+/* .image{
+display: block;
+margin-left: auto;
+margin-right: auto;
+} */
+
+/* li{
+display:inline;
+float:left;
+} */
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    /* overflow: hidden; */
+    background-color: #5d4965;
+    height: 100%; /* Full height */
+    position:fixed;
+    overflow: auto;
+}
+
+li a{
+    display: block;
+    color:#f9e0d9;
+    /* text-align: center; */
+    padding: 8px 15px;
+    background-color:#5d4965;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color:#f9e0d9;
+    color:#5d4965
+}
+
+.active {
+    background-color:#f9e0d9;
+}
+
+.header {
+    /* background-color:#5d4965; */
+    text-align: left;
+    padding: 0;
+} 
+
+.column {
+    float: left;
+    width: 25%;
+} */
+
+img {
+    border-radius: 70%;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <ul id="messages"></ul>
+
+    <form id="message-form">
+        <label for="message-input">Message:</label>
+        <input type="text" id="message-input" name="message-input">
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var conn = new WebSocket('ws://localhost:8080');
+            var messageList = document.getElementById('messages');
+            var messageForm = document.getElementById('message-form');
+            var messageInput = document.getElementById('message-input');
+
+            conn.onopen = function(e) {
+                console.log("WebSocket connection established");
+            };
+
+            // process incoming message and display on screen
+            conn.onmessage = function (e) {
+                console.log("Received message: " + e.data);
+
+                // Get current date and time
+                const currentDate = new Date();
+                const year = currentDate.getFullYear();
+                const month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+                const day = ("0" + currentDate.getDate()).slice(-2);
+                const hour = ("0" + currentDate.getHours()).slice(-2);
+                const minute = ("0" + currentDate.getMinutes()).slice(-2);
+                const second = ("0" + currentDate.getSeconds()).slice(-2);
+
+
+                var parts = e.data.split(": ");
+                var listItem = document.createElement('li');
+                var textNode = document.createTextNode('From ' + parts[1] + ': '+ parts[0] + ', ' + hour +':' + minute +':'+ second);
+                listItem.appendChild(textNode);
+                messageList.appendChild(listItem);
+            };
+
+            messageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var message = messageInput.value;
+                conn.send(message);
+                messageInput.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
