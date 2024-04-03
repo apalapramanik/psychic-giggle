@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Message</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif; /* Set the font family */
+        font-size: 40px; /* Set the font size */
+    }
+    #messageCounter {
+        font-size: 40px; /* Set the font size */
+        margin-top: 40px; /* Add spacing above the text */
+    }
+
+    input[type="text"], input[type="submit"] {
+            font-size: 1em; /* Set the font size relative to the parent (40px) */
+            width: 10em; /* Set the width relative to the font size */
+            height: 2em; /* Set the height relative to the font size */
+    }
+</style>
+<body>
+    <!-- Form to submit message -->
+    <form id="messageForm" onsubmit="sendMessage(); return false;">
+        <label for="message">Please leave your feedback here:</label>
+        <input type="text" id="message" name="message">
+        <input type="submit" value="SUBMIT">
+    </form>
+
+    <!-- Display area for message count -->
+    <div id="messageCounter"></div>
+
+    <script>
+
+        function sendMessage() {
+
+            // Get the message from the input field
+            var message = document.getElementById("message").value;
+
+            // Construct the URL with the message
+            var url = "counter.php?message=" + encodeURIComponent(message);
+
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Define a callback function to handle the response
+            xhr.onreadystatechange = function() {
+                // Check if the request is complete
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    // Check if the request was successful
+                    if (xhr.status == 200) {
+                        // Request was successful, process the response
+                        var count = xhr.responseText;
+                        // Update the messageCounter element with the count value
+                        var messageCounter = document.getElementById("messageCounter");
+                        messageCounter.innerHTML = "Total number of feedbacks received: " + count;
+                    } else {
+                        // Request failed, log the error
+                        console.error('Request failed: ' + xhr.status);
+                    }
+                }
+            };
+
+            // Open a GET request to the server with the constructed URL
+            xhr.open("GET", url, true);
+
+            // Send the request
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

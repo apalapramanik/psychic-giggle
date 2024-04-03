@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Time Display</title>
+    <script>
+        // Function to send AJAX request to the backend
+        function getTime() {
+            var xhttp = new XMLHttpRequest();
+            var filename = document.getElementById("filename").value;
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Parse the response as JSON
+                    var response = JSON.parse(this.responseText);
+                    // Create a new <p> element with blue background color
+                    var p = document.createElement("p");
+                    p.style.backgroundColor = "blue";
+                    // Set the text content to the received time
+                    p.textContent = response.time;
+                    // Append the new <p> element to the document body
+                    document.body.appendChild(p);
+                }
+            };
+
+            // Send the request to the backend
+            xhttp.open("GET", filename, true);
+            xhttp.send();
+        }
+
+        // Call getTime function every second
+        setInterval(getTime, 1000);
+    </script>
+</head>
+<body>
+    <label for="filename">Enter the target backend filename:</label>
+    <input type="text" id="filename" value="time.php">
+</body>
+</html>
+
