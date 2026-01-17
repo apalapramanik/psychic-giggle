@@ -1,6 +1,6 @@
 
 
-# CSCE 864: Internet Systems and Programming - Spring 2024
+# Internet Systems and Programming
 
 A collection of web development projects exploring HTML, CSS, JavaScript, and PHP fundamentals.
 
